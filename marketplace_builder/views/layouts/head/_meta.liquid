@@ -1,0 +1,41 @@
+{% comment %}
+There are two ways of setting the title and description.
+Preferred one is using the page metadata section,
+but it only allows for static content. If dynamic one is needed
+you can use content_for 'meta_title' and 'meta_description'
+instead (which will fallback to metadata if empty).
+{% endcomment %}
+{%- capture title -%}
+  {%- yield 'meta_title' -%}
+{%- endcapture -%}
+{%- if title == blank -%}
+  {%- assign title = page.metadata.title -%}
+{%- endif -%}
+{%- capture title -%}
+  {{ title }}{% if title %} | {% endif %} WeDo
+{%- endcapture -%}
+
+{%- capture description -%}
+  {%- yield 'meta_description' -%}
+{%- endcapture -%}
+{%- if description == blank -%}
+  {%- assign description = page.metadata.description -%}
+{%- endif -%}
+
+<title>{{ title }}</title>
+<meta name="application-name" content="WeDo">
+
+{% if description -%}
+  <meta name="description" content="{{ description }}">
+  <meta property="og:og:description" content="{{ description }}">
+  <meta name="twitter:description" content="{{ description }}">
+{%- endif %}
+
+<meta property="og:url" content="{{ current_url }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:site_name" content="WeDo">
+
+<meta name="twitter:url" content="{{ current_url }}">
+<meta name="twitter:title" content="{{ title }}">
+

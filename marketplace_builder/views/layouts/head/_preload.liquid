@@ -1,0 +1,3 @@
+{%- for javascript_url in page.metadata.javascripts  -%}
+  <link rel="preload" href="{{ javascript_url | asset_url }}" as="script">
+{%- endfor -%}

@@ -1,0 +1,19 @@
+{%- include 'shared/assets/generated' -%}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  {%- yield 'head_top' -%}
+
+  {%- include 'layouts/head/meta' -%}
+
+  <meta content="{{ form_authenticity_token }}" name="csrf-token">
+  <meta content="authenticity_token" name="csrf-param">
+
+  {%- include 'layouts/head/favicon' -%}
+
+  {%- yield 'head_bottom' -%}
+
+  <script>document.documentElement.classList.add('js');</script>
+</head>

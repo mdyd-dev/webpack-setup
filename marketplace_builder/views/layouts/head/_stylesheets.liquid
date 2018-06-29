@@ -1,0 +1,3 @@
+{%- for stylesheet_url in page.metadata.stylesheets -%}
+  <link href="{{ stylesheet_url | asset_url }}" rel="stylesheet">
+{%- endfor -%}
